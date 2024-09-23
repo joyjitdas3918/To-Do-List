@@ -12,18 +12,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './todos.component.css'
 })
 export class TodosComponent {
-  todos: Todo[]; 
+  todos: Todo[] = []; // Initialize as an empty array
   localItem;
-  constructor(){
-    const todos = localStorage.getItem("todos");
-if (todos) {
-    this.localItem = todos;
-    
-    this.todos=JSON.parse(this.localItem);
-}
-else{
-  this.todos=[]
-}
+
+  constructor() {
+    const tod = localStorage.getItem("todos");
+    if (tod) {
+      this.localItem = tod;
+      this.todos = JSON.parse(this.localItem);
+    }
   }
   deleteTodo(todo:Todo){
     const index=this.todos?.indexOf(todo);
